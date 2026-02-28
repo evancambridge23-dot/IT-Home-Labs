@@ -1,127 +1,65 @@
-Objective
+# IT Home Lab: Linux User Management
 
+## Objective
 Deploy a Linux server in a virtualized environment and simulate IT administrative tasks including user onboarding, group management, shared directory configuration, and permission assignment.
 
-Environment
+---
 
-Hypervisor: Oracle VirtualBox
+## Environment
+* **Hypervisor:** Oracle VirtualBox
+* **OS:** Ubuntu Server LTS
+* **Hostname:** DriftwoodDragon
+* **Primary Admin User:** evanc0323
+* **Network:** DHCP assigned IP
 
+---
 
-OS: Ubuntu Server LTS
+## Lab Execution Steps
 
+### Task 1 – System Verification
+Validated system identity and network configuration to confirm the active administrative user and interface assignment.
 
-Hostname: DriftwoodDragon
-
-
-Primary Admin User: evanc0323
-
-
-Network: DHCP assigned IP
-
-
-
-
-Task 1 – System Verification
-
-Validated system identity and network configuration:
+bash
 whoami
-
-
 hostname
-
-
 ip a
 
+##Task 2 – User Onboarding Simulation
+Created a new employee account and verified the entry within the system identity files.
+Bash
+sudo adduser employee1
+cat /etc/passwd | grep employee1
 
-Confirmed the active administrative user, hostname configuration, and network interface assignment.
-
-
-
-Task 2 – User Onboarding Simulation
-
-Created new employee account: 
- sudo adduser employee1
-Verified account creation:
- cat /etc/passwd | grep employee1
-
-
-
-
-Task 3 – Shared Directory Configuration
-
-Created a shared organizational directory and test file:
+## Task 3 – Shared Directory Configuration
+Created a shared organizational directory and a test file to simulate a centralized file storage location for department collaboration.
+Bash
 sudo mkdir /companydata
 sudo touch /companydata/project.txt
 
-This simulates a centralized file storage location for department collaboration.
-
-
-
-
-Task 4 – Department Group Management
-
-Created a department security group:
+## Task 4 – Department Group Management
+Created a department security group and added the new employee to the group to manage access levels.
+Bash
 sudo groupadd staff
-
-Added employee to group:
 sudo usermod -aG staff employee1
 
-
-
-
-Task 5 – Permission Assignment
-
-Assigned group ownership:
+## Task 5 – Permission Assignment
+Assigned group ownership and applied secure directory permissions to enforce the organizational security model.
+Bash
 sudo chown :staff /companydata
-
-Applied secure directory permissions:
 sudo chmod 770 /companydata
 
-Permission Model implemented:
+Permission Model Implemented:
 Owner: Full access
-
-
 Group: Full access
-
-
 Others: No access
-
-This enforces controlled access aligned with organizational security practices.
-
-
-
-
-Task 6 – Permission Testing & Troubleshooting
-
-Switched to employee account:
+## Task 6 – Permission Testing & Troubleshooting
+Switched to the employee account to validate directory access. Resolved an authentication error by resetting the employee password.
+Bash
+# Switch to the employee account
 su - employee1
 
-Attempted to access shared directory:
-cd /companydata
-
-Encountered authentication error during testing. Resolved issue by resetting employee password:
+# If authentication fails, reset the password from the admin account:
 sudo passwd employee1
 
-if permissions set properly, it will change the name to “employee1@DriftwoodDragon”) 
-
-cd /companydata 
-
-Successfully validated directory access after correction.
-
-
-
-
-Key Skills Demonstrated
-Linux user management
-
-
-Group-based access control
-
-
-File system permissions
-
-
-Troubleshooting authentication issues
-
-
-Command-line administration
+# Successfully access the directory (Prompt should change to employee1@DriftwoodDragon)
+cd /companydata
