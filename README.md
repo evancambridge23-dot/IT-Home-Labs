@@ -21,4 +21,4 @@ The purpose of this lab environment is to simulate real-world system administrat
 | Lab | Description | Link |
 |-----|------------|------|
 | Lab 1 | Linux User & Permission Management | [View](Lab1-Linux-User-Management/) |
-| Lab 2 | SSH & System Monitoring Automation | [View](SSH_System_Monitoring/) |
+| Lab 2 | SSH & System Monitoring Automation | [View](SSH-System-Monitoring/) |
