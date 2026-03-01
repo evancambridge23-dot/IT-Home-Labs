@@ -150,7 +150,7 @@ python3 system_check.py
 
 ## SSH Connection Successful
 
-![SSH Connection](screenshots/ssh_status.png)
+![SSH Connection](screenshots/SSH_Status.png)
 
 ## Python Automation Output
 
