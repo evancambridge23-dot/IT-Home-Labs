@@ -1,3 +1,6 @@
+> Screenshots included below for validation and proof of execution
+
+
 SSH & System Monitoring Automation
 
 
@@ -141,3 +144,14 @@ Executed script
 ```bash
 python3 system_check.py
 ```
+
+
+
+
+## SSH Connection Successful
+
+![SSH Connection](screenshots/ssh_status.png)
+
+## Python Automation Output
+
+![Python Output](screenshots/system_check_output.png)
