@@ -16,7 +16,7 @@ Deploy a Linux server in a virtualized environment and simulate IT administrativ
 
 ## Lab Execution Steps
 
-### Task 1 – System Verification
+## Task 1 – System Verification
 Validated system identity and network configuration to confirm the active administrative user and interface assignment.
 
 bash
@@ -24,7 +24,7 @@ whoami
 hostname
 ip a
 
-##Task 2 – User Onboarding Simulation
+## Task 2 – User Onboarding Simulation
 Created a new employee account and verified the entry within the system identity files.
 Bash
 sudo adduser employee1
