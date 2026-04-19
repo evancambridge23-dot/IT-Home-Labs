@@ -1,143 +1,165 @@
-**\#  Ubuntu Server Lab 3 – Security Hardening & Log Auditing**
+#  Ubuntu Server Lab 3 – Security Hardening & Log Auditing
 
-**\#\#  Objective**
+##  Objective
 
 Simulate basic system security and monitoring tasks by:
 
-\- Configuring a firewall using UFW  
-\- Analyzing authentication logs  
-\- Monitoring user activity and services  
-\- Enhancing a Python script to log system reports
+- Configuring a firewall using UFW
+- Analyzing authentication logs
+- Monitoring user activity and services
+- Enhancing a Python script to log system reports
 
-\#\#  Environment
 
-\- Hypervisor: Oracle VM VirtualBox  
-\- OS: Ubuntu Server LTS  
-\- Network Mode: NAT (DHCP)  
-\- Python Version: python3 \--version
+##  Environment
 
-\---
+- Hypervisor: Oracle VM VirtualBox
+- OS: Ubuntu Server LTS
+- Network Mode: NAT (DHCP)
+- Python Version: python3 --version
 
-\#\# Firewall Configuration (UFW)
+---
 
-\#\#\# Check Firewall Status
+## Firewall Configuration (UFW)
 
-\`\`\`bash  
-sudo ufw status   
-\`\`\`
+### Check Firewall Status
 
-\#\#\# Allow SSH Access (Port 22\) 
+```bash
+sudo ufw status 
+```
 
-\`\`\`bash   
-sudo ufw allow 22  
-\`\`\`
+### Allow SSH Access (Port 22) 
 
-\#\#\#  Enable Firewall 
+```bash 
+sudo ufw allow 22
+```
 
-\`\`\`bash   
-sudo ufw enable  
-\`\`\`
+###  Enable Firewall 
 
-\#\#\# Verify Status
+```bash 
+sudo ufw enable
+```
 
-\`\`\`bash  
-sudo ufw status verbose  
-\`\`\`
+### Verify Status
 
-\*\*Results:\*\* firewall enabled and SSH access permitted.
+```bash
+sudo ufw status verbose
+```
 
-\#\#  Log File Analysis 
+**Results:** firewall enabled and SSH access permitted.
 
-\#\#\#  Navigate to Logs 
 
-\`\`\`bash   
-cd /var/log  
-\`\`\`
+##  Log File Analysis 
 
-\#\#\#  View Authentication Logs 
+###  Navigate to Logs 
 
-\`\`\`bash  
-sudo less auth.log  
-\`\`\`
+```bash 
+cd /var/log
+```
 
-\#\#\# Filter Failed Login Attempts 
+###  View Authentication Logs 
 
-\`\`\`bash   
-sudo grep "Failed password" /var/log/auth.log  
-\`\`\`
+```bash
+sudo less auth.log
+```
 
-\#\# User Monitoring 
+### Filter Failed Login Attempts 
 
-\#\#\#  Active Users 
+```bash 
+sudo grep "Failed password" /var/log/auth.log
+```
 
-\`\`\`bash   
-who  
-\`\`\`
+## User Monitoring 
 
-\#\#\#  Login History
+###  Active Users 
 
-\`\`\`bash   
-last  
-\`\`\`  
-\*\*Results:\*\* Verified user sessions and login history.
+```bash 
+who
+```
 
-\#\#  Service Monitoring
+###  Login History
 
-\`\`\`bash   
-systemctl list-units \--type=service   
-	\`\`\`  
-\*\*Results:\*\* Displayed active system services (background processes). 
+```bash 
+last
+```
+**Results:** Verified user sessions and login history.
 
-\#\# Python Automation
+##  Service Monitoring
 
-\`\`\`python
+```bash 
+systemctl list-units --type=service 
+	```
+**Results:** Displayed active system services (background processes). 
 
-import os  
+
+
+## Python Automation
+
+```python
+
+import os
 from datetime import datetime
 
-log\_file \= "system\_report.txt"
+log_file = "system_report.txt"
 
-with open(log\_file, "a") as f:  
-    f.write("=== SYSTEM CHECK \===\\n")  
-    f.write(f"Time: {datetime.now()}\\n\\n")
+with open(log_file, "a") as f:
+    f.write("=== SYSTEM CHECK ===\n")
+    f.write(f"Time: {datetime.now()}\n\n")
 
-    f.write("Uptime:\\n")  
-    os.system("uptime \>\> system\_report.txt")
+    f.write("Uptime:\n")
+    os.system("uptime >> system_report.txt")
 
-    f.write("\\nDisk Usage:\\n")  
-    os.system("df \-h \>\> system\_report.txt")
+    f.write("\nDisk Usage:\n")
+    os.system("df -h >> system_report.txt")
 
-    f.write("\\nMemory Usage:\\n")  
-    os.system("free \-h \>\> system\_report.txt")
+    f.write("\nMemory Usage:\n")
+    os.system("free -h >> system_report.txt")
 
-    f.write("\\n----------------------\\n\\n")
+    f.write("\n----------------------\n\n")
 
-print("System report saved to system\_report.txt")  
-\`\`\`
+print("System report saved to system_report.txt")
+```
 
-\#\# Execute Script 
 
-\`\`\`bash  
-python3 system\_check.py  
-\`\`\`
 
-\#\# View Results 
 
-\`\`\`bash   
-cat system\_report.txt  
-\`\`\`
 
-\#\#  UFW Firewall  
-\! \[Firewall Status\](Screenshots/FirewallStatus.png)
 
-\#\#  View Authentication Logs  
-\! \[Authentication Logs\](Screenshots/AdminLogs.png)
+## Execute Script 
 
-\#\# Monitor User Activity  
-\! \[User Monitoring\](Screenshots/UserMonitoring.png)
+```bash
+python3 system_check.py
+```
 
-\#\# Check Running Background Services  
-\! \[Check Services\](Screenshots/RunningServices.png)
 
-\#\# Python Automated System Check  
-\! \[System Check\](Screenshots/SystemReportOutput.png)
+
+## View Results 
+
+```bash 
+cat system_report.txt
+```
+
+
+
+
+
+
+
+##  UFW Firewall
+![Firewall Status](Screenshots/FirewallStatus.png)
+
+
+##  View Authentication Logs
+![Authentication Logs](Screenshots/AdminLogs.png)
+
+
+## Monitor User Activity
+![User Monitoring](Screenshots/UserMonitoring.png)
+
+
+## Check Running Background Services
+![Check Services](Screenshots/RunningServices.png)
+
+
+## Python Automated System Check
+![System Check](Screenshots/SystemReportOutput.png)
+
